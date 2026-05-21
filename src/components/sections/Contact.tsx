@@ -17,21 +17,21 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    value: "mohammadfaizalam@example.com",
-    link: "mailto:mohammadfaizalam@example.com",
+    value: "faizfzx99@gmail.com",
+    link: "mailto:faizfzx99@gmail.com",
   },
 
   {
 icon: FaLinkedin,    title: "LinkedIn",
-    value: "linkedin.com/in/mohammadfaizalam",
-    link: "https://linkedin.com",
+    value: "linkedin.com/in/mohammadfaiz25",
+    link: "https://www.linkedin.com/in/mohammadfaiz25/",
   },
 
   {
     icon: FaGithub,
     title: "GitHub",
-    value: "github.com/mohammadfaizalam",
-    link: "https://github.com",
+    value: "github.com/faizkhh",
+    link: "https://github.com/faizkhh",
   },
 
   {
