@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { fadeUp, fadeIn, staggerContainer } from "@/lib/animations";
 
+
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
