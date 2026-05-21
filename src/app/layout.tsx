@@ -1,5 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import ScrollProgress from "@/components/ui/ScrollProgress";
+import CursorGlow from "@/components/ui/CursorGlow";
 
 export const metadata: Metadata = {
   title: "Mohammad Faiz Alam | Full Stack Developer",
@@ -28,7 +30,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="bg-black text-white">
+        {/* ✨ Premium UI Effects (GLOBAL) */}
+        <CursorGlow />
+        <ScrollProgress />
+
+        {/* Page Content */}
+        {children}
+      </body>
     </html>
   );
 }
