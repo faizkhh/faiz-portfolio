@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
@@ -18,25 +17,30 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+  // optimized scroll handler (no re-create on every render)
+  const handleScroll = useCallback(() => {
+    const isScrolled = window.scrollY > 10;
+    setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev));
   }, []);
 
+  useEffect(() => {
+    // passive listener = better performance on mobile
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
+
   return (
-    <motion.header
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300
-        ${scrolled ? "bg-black/60 backdrop-blur-md shadow-[0_1px_0_rgba(255,255,255,0.05)]" : "bg-transparent"}
-      `}
+    <header
+      className={[
+        "fixed top-0 left-0 w-full z-50",
+        "transition-colors duration-300",
+        scrolled
+          ? "bg-black/90 border-b border-white/10"
+          : "bg-transparent",
+      ].join(" ")}
     >
-      <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+      <div className="max-w-6xl mx-auto flex items-center justify-between px-5 py-4">
 
         {/* Logo */}
         <Link
@@ -48,59 +52,64 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex gap-8">
-          {navItems.map((item, i) => (
+          {navItems.map((item) => (
             <Link
-              key={i}
+              key={item.name}
               href={item.href}
-              className="text-white/70 hover:text-white transition-all duration-200 hover:-translate-y-[1px] text-sm tracking-wide"
+              className="text-white/70 hover:text-white text-sm transition-colors"
             >
               {item.name}
             </Link>
           ))}
         </nav>
 
-        {/* CTA (Desktop) */}
+        {/* Desktop Button */}
         <a
           href="#contact"
-          className="hidden md:block px-4 py-2 rounded-md bg-sky-500/10 border border-sky-500/30 text-sky-400 text-sm hover:bg-sky-500/20 transition-all duration-200"
+          className="hidden md:block px-4 py-2 rounded-md bg-sky-500 text-white text-sm hover:opacity-90 transition"
         >
           Hire Me
         </a>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Button */}
         <button
           className="md:hidden text-white"
-          onClick={() => setMobileOpen(!mobileOpen)}
+          onClick={() => setMobileOpen((v) => !v)}
+          aria-label="Toggle menu"
         >
           {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      {mobileOpen && (
-        <div className="md:hidden bg-black/90 backdrop-blur-md border-t border-white/10 px-6 py-4">
-          <div className="flex flex-col gap-4">
-            {navItems.map((item, i) => (
-              <Link
-                key={i}
-                href={item.href}
-                onClick={() => setMobileOpen(false)}
-                className="text-white/70 hover:text-white text-sm transition-all"
-              >
-                {item.name}
-              </Link>
-            ))}
-
-            <a
-              href="#contact"
+      {/* Mobile Menu (optimized: no heavy re-renders inside loop) */}
+      <div
+        className={[
+          "md:hidden overflow-hidden transition-all duration-300",
+          mobileOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0",
+          "bg-black border-t border-white/10 px-6"
+        ].join(" ")}
+      >
+        <div className="flex flex-col gap-4 py-4">
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
               onClick={() => setMobileOpen(false)}
-              className="mt-2 px-4 py-2 rounded-md bg-sky-500/10 border border-sky-500/30 text-sky-400 text-sm text-center"
+              className="text-white/70 hover:text-white text-sm"
             >
-              Hire Me
-            </a>
-          </div>
+              {item.name}
+            </Link>
+          ))}
+
+          <a
+            href="#contact"
+            onClick={() => setMobileOpen(false)}
+            className="mt-2 px-4 py-2 rounded-md bg-sky-500 text-white text-sm text-center"
+          >
+            Hire Me
+          </a>
         </div>
-      )}
-    </motion.header>
+      </div>
+    </header>
   );
 }

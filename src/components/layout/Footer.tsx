@@ -13,12 +13,12 @@ import { ArrowUp } from "lucide-react";
 const socials = [
   {
     icon: FaGithub,
-    link: "https://github.com",
+    link: "https://github.com/faizkhh",
   },
 
   {
     icon: FaLinkedin,
-    link: "https://linkedin.com",
+    link: "https://www.linkedin.com/in/mohammadfaiz25/",
   },
 ];
 
