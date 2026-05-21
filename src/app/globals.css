@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+/* =====================
+   DESIGN TOKENS
+===================== */
+:root {
+  --bg: #030712;
+  --fg: #f9fafb;
+
+  --card: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.08);
+
+  --primary: #3b82f6;
+  --secondary: #8b5cf6;
+
+  --muted: #94a3b8;
+}
+
+/* =====================
+   BASE RESET
+===================== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans, system-ui, sans-serif);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Selection */
+::selection {
+  background: var(--primary);
+  color: white;
+}
+
+/* =====================
+   SCROLLBAR (clean minimal)
+===================== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.6);
+}
+
+/* =====================
+   LAYOUT SYSTEM
+===================== */
+
+.section {
+  padding: 100px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* =====================
+   GLASS SYSTEM (premium)
+===================== */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+/* =====================
+   TEXT SYSTEM
+===================== */
+.gradient-text {
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    var(--secondary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Muted text helper */
+.text-muted {
+  color: var(--muted);
+}
+
+/* =====================
+   HERO GLOW SYSTEM (centralized)
+===================== */
+.glow-blue {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: var(--primary);
+  opacity: 0.12;
+  filter: blur(140px);
+  border-radius: 50%;
+}
+
+.glow-purple {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: var(--secondary);
+  opacity: 0.12;
+  filter: blur(140px);
+  border-radius: 50%;
+}
+
+/* =====================
+   BUTTON SYSTEM (important)
+===================== */
+.btn {
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-weight: 500;
+  transition: 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  border: 1px solid var(--border);
+  color: white;
+  background: transparent;
+}
+
+.btn-outline:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+}
