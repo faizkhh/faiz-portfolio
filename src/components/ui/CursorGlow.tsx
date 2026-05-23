@@ -6,12 +6,22 @@ export default function CursorGlow() {
   const [pos, setPos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
+    // Don't run on touch devices — no cursor + kills performance
+    if (window.matchMedia("(pointer: coarse)").matches) return;
+
+    let rafId: number;
     const move = (e: MouseEvent) => {
-      setPos({ x: e.clientX, y: e.clientY });
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        setPos({ x: e.clientX, y: e.clientY });
+      });
     };
 
     window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
+    return () => {
+      window.removeEventListener("mousemove", move);
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (
