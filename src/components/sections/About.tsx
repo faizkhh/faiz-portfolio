@@ -2,8 +2,8 @@
 
 const stats = [
   { label: "Projects", value: "10+" },
-  { label: "Experience", value: "Fresher" },
-  { label: "Technologies", value: "8+" },
+  { label: "Experience", value: "2 Years" },
+  { label: "Technologies", value: "15+" },
   { label: "Focus", value: "Backend" },
 ];
 
@@ -22,16 +22,18 @@ const About = () => {
             </h2>
 
             <p className="text-gray-400 leading-relaxed">
-              I am a passionate backend developer focused on building scalable
-              and production-ready applications. I enjoy designing APIs,
-              working with databases, and building clean system architectures
-              using Java, Spring Boot, and modern web technologies.
+              Software Engineer and IT professional with 2 years of experience
+              building production-grade backend systems. I've shipped RESTful
+              APIs in Java and Spring Boot, designed MySQL schemas, delivered
+              Power BI dashboards, and supported live applications serving
+              1,000+ active users.
             </p>
 
             <p className="text-gray-400 leading-relaxed">
-              My goal is to become a strong full-stack engineer with deep
-              backend expertise, contributing to real-world systems that scale
-              and perform efficiently.
+              I'm comfortable across the full stack — from backend architecture
+              and database design to frontend interfaces and IT systems support.
+              I work well in cross-functional teams, take ownership of my work,
+              and care about writing clean, maintainable code.
             </p>
 
             <div className="flex gap-4 pt-4">
