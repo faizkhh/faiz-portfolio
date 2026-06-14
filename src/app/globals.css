@@ -79,10 +79,16 @@ body {
    GLASS SYSTEM (premium)
 ===================== */
 .glass {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--border);
   border-radius: 16px;
+}
+
+@media (hover: hover) {
+  .glass {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(16px);
+  }
 }
 
 /* =====================
@@ -108,22 +114,32 @@ body {
 ===================== */
 .glow-blue {
   position: absolute;
-  width: 500px;
-  height: 500px;
+  width: 200px;
+  height: 200px;
   background: var(--primary);
-  opacity: 0.12;
-  filter: blur(140px);
+  opacity: 0.10;
+  filter: blur(60px);
   border-radius: 50%;
 }
 
 .glow-purple {
   position: absolute;
-  width: 500px;
-  height: 500px;
+  width: 200px;
+  height: 200px;
   background: var(--secondary);
-  opacity: 0.12;
-  filter: blur(140px);
+  opacity: 0.10;
+  filter: blur(60px);
   border-radius: 50%;
+}
+
+@media (hover: hover) {
+  .glow-blue,
+  .glow-purple {
+    width: 500px;
+    height: 500px;
+    filter: blur(140px);
+    opacity: 0.12;
+  }
 }
 
 /* =====================

@@ -1,24 +1,32 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import ScrollProgress from "@/components/ui/ScrollProgress";
-import CursorGlow from "@/components/ui/CursorGlow";
 
 export const metadata: Metadata = {
-  title: "Mohammad Faiz Alam | Full Stack Developer",
+  title: "Mohammad Faiz Alam | Java Backend Developer",
   description:
-    "Portfolio of Mohammad Faiz Alam - Full Stack Developer specializing in Java, Spring Boot, React.js, and Next.js.",
+    "Java Backend Developer specializing in Spring Boot, REST APIs, MySQL, React and Next.js.",
+
   keywords: [
-    "Full Stack Developer",
     "Java Developer",
     "Spring Boot",
-    "Next.js Portfolio",
-    "React Developer",
+    "Backend Developer",
+    "REST API",
+    "Next.js",
+    "React",
+    "MySQL",
   ],
-  authors: [{ name: "Mohammad Faiz Alam" }],
+
+  authors: [
+    {
+      name: "Mohammad Faiz Alam",
+    },
+  ],
+
   openGraph: {
     title: "Mohammad Faiz Alam Portfolio",
     description:
-      "Full Stack Developer specializing in Java, Spring Boot, and Next.js",
+      "Java Backend Developer specializing in Spring Boot and scalable web applications.",
     type: "website",
   },
 };
@@ -31,11 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-black text-white">
-        {/* ✨ Premium UI Effects (GLOBAL) */}
-        <CursorGlow />
         <ScrollProgress />
-
-        {/* Page Content */}
         {children}
       </body>
     </html>
