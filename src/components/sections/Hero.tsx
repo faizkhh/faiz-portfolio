@@ -24,7 +24,7 @@ const Hero = () => {
 
           {/* Name */}
           <h1 className="text-5xl md:text-7xl font-bold">
-            Hi, I'm{" "}
+            Hi,I  am{" "}
             <span className="gradient-text">Mohammad Faiz Alam</span>
           </h1>
 

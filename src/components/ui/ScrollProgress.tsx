@@ -1,35 +1,47 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export default function ScrollProgress() {
-  const [width, setWidth] = useState(0);
+  const barRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let rafId: number;
+    let rafId = 0;
 
-    const handleScroll = () => {
+    const updateProgress = () => {
       cancelAnimationFrame(rafId);
+
       rafId = requestAnimationFrame(() => {
         const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        setWidth((scrollTop / docHeight) * 100);
+        const docHeight =
+          document.documentElement.scrollHeight - window.innerHeight;
+
+        const progress = (scrollTop / docHeight) * 100;
+
+        if (barRef.current) {
+          barRef.current.style.width = `${progress}%`;
+        }
       });
     };
 
-    // passive: true is critical for mobile scroll performance
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", updateProgress, {
+      passive: true,
+    });
+
+    updateProgress();
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", updateProgress);
       cancelAnimationFrame(rafId);
     };
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 w-full h-[2px] z-[9999] bg-transparent">
+    <div className="fixed top-0 left-0 w-full h-[2px] z-[9999]">
       <div
-        className="h-full bg-sky-400 transition-all duration-150"
-        style={{ width: `${width}%` }}
+        ref={barRef}
+        className="h-full bg-sky-400"
+        style={{ width: "0%" }}
       />
     </div>
   );
