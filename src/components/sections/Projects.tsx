@@ -6,40 +6,40 @@ const projects = [
     description:
       "Secure dynamic OTP authentication system built as part of a Greendzine Technologies freelance assignment. Replaces traditional password logins with random OTP generation, 30-second expiration logic, and a full resend OTP flow. Strictly follows Adobe XD design specs with Chart.js dashboard integration.",
     tech: ["React.js", "Hash Router", "LocalStorage", "Chart.js"],
-    image:
-      "https://images.unsplash.com/photo-1614064641938-3bbee52942c7",
+    image: "/images/projects/otp-auth.png",
+    github: "https://greendzine-assignment-ten-jade.vercel.app/",
   },
   {
     title: "Hospital Management System",
     description:
       "Full-stack hospital management platform with patient records, appointment booking, doctor management, and secure authentication.",
     tech: ["Java", "JDBC", "MySQL", "HTML", "CSS"],
-    image:
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f",
+    image: "/images/projects/hospital.png",
+    github: "https://github.com/faizkhh/YOUR_REPO_2",
   },
   {
     title: "Signature Forgery Detection",
     description:
       "Machine learning project using CNN and HOG algorithms to detect forged signatures with improved accuracy and image preprocessing. Published as a research paper in IRJMETS Journal.",
     tech: ["Python", "CNN", "HOG", "Machine Learning"],
-    image:
-      "https://images.unsplash.com/photo-1555949963-aa79dcee981c",
+    image: "/images/projects/signature.png",
+    github: "https://github.com/faizkhh/YOUR_REPO_3",
   },
   {
     title: "Movie Recommendation System",
     description:
       "Content-based movie recommendation engine that suggests films based on user preferences using similarity scoring across a large dataset.",
     tech: ["Python", "NumPy", "Pandas"],
-    image:
-      "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba",
+    image: "/images/projects/movie.png",
+    github: "https://github.com/faizkhh/recommendation-system",
   },
   {
-    title: "Jarvis — Personal AI Assistant",
+    title: "Personal AI Assistant",
     description:
       "Voice-activated personal AI assistant built in Python, capable of answering questions, opening applications, playing music, and performing web searches hands-free.",
     tech: ["Python", "Speech Recognition", "pyttsx3", "Wikipedia API"],
-    image:
-      "https://images.unsplash.com/photo-1531746790731-6c087fecd65a",
+    image: "/images/projects/jarvis.png",
+    github: "https://github.com/faizkhh/Virtual-Personal-Assistant-using-Python-master",
   },
 ];
 
@@ -49,7 +49,7 @@ const GithubIcon = () => (
   </svg>
 );
 
-export default function Projects() {
+const Projects = () => {
   return (
     <section id="projects" className="section relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
@@ -106,12 +106,7 @@ export default function Projects() {
                   ))}
                 </div>
 
-                <a
-                  href="https://github.com/faizkhh"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-outline"
-                >
+                <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
                   <GithubIcon />
                   View on GitHub
                 </a>
@@ -122,4 +117,6 @@ export default function Projects() {
       </div>
     </section>
   );
-}
+};
+
+export default Projects;

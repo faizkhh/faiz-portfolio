@@ -2,7 +2,7 @@ const timeline = [
   {
     title: "Software Engineer & IT Support",
     company: "MFABCON, Saudi Arabia",
-    period: "2023 — Present",
+    period: "2025 — Present",
     description: [
       "Built and deployed RESTful APIs with Java & Spring Boot (MVC, SOLID); reduced API latency by 30% through query optimisation.",
       "Designed normalised MySQL schemas with stored procedures, indexing, and zero-downtime migrations.",
@@ -13,8 +13,8 @@ const timeline = [
   },
   {
     title: "Project Engineer",
-    company: "Baryon's Software Solution, Bengaluru",
-    period: "2022 — 2023",
+    company: "Baryon's, Bengaluru",
+    period: "2024 — 2025",
     description: [
       "Developed Java backend modules for a live web application serving 1,000+ active users — business logic, third-party integrations, and CRUD operations.",
       "Engineered test plans covering 200+ REST API endpoints; reduced post-release defect escape rate by ~25%.",

@@ -2,7 +2,7 @@
 
 const stats = [
   { label: "Projects", value: "10+" },
-  { label: "Experience", value: "2 Years" },
+  { label: "Experience", value: "1.5 Years" },
   { label: "Technologies", value: "15+" },
   { label: "Focus", value: "Backend" },
 ];
